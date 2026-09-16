@@ -1,0 +1,73 @@
+{
+  "fixturePolicy": "These files are shared inputs and integrity fixtures only. They do not assert implementation behavior.",
+  "fixtures": [
+    {
+      "name": "opaque.png",
+      "purpose": "Valid static PNG with opaque RGBA pixels for the ordinary PNG-to-JPEG path.",
+      "expectedValidity": "valid-static-png",
+      "expectedContainer": "PNG",
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "hasTransparency": false,
+      "sha256": "9142cb1920e44c350588d8778d6c73d625f78069399f1fee56a7bd3a7777d49e"
+    },
+    {
+      "name": "transparent.png",
+      "purpose": "Valid static PNG with fully and partially transparent pixels for background-flattening checks.",
+      "expectedValidity": "valid-static-png",
+      "expectedContainer": "PNG",
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "hasTransparency": true,
+      "sha256": "9929fa657cdf0933e73a93ecae81e5c832220f593af870adc582601f05eb4d11"
+    },
+    {
+      "name": "corrupt.png",
+      "purpose": "PNG-signature file with a deliberately invalid IDAT CRC for corrupt-input rejection.",
+      "expectedValidity": "invalid-corrupt-png",
+      "expectedContainer": "PNG signature with invalid chunk data",
+      "sha256": "209fade3f8efc9bfdd4dde90503c74025b5783356c1091e8e5646ff27975223f"
+    },
+    {
+      "name": "renamed-jpeg.png",
+      "purpose": "JPEG-signature bytes deliberately given a .png filename for false-label detection.",
+      "expectedValidity": "invalid-as-png-non-png-container",
+      "expectedContainer": "JPEG",
+      "sha256": "d20f6ffd523b78a86cd2f916fa34af5d1918d75f7b142237c752ad6b254213ab"
+    },
+    {
+      "name": "animated.png",
+      "purpose": "Valid two-frame APNG for animated-input rejection.",
+      "expectedValidity": "valid-animated-png",
+      "expectedContainer": "APNG",
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "hasTransparency": true,
+      "frameCount": 2,
+      "sha256": "c2861a9c3c1c52bf507e475057bf3817d36efbe5753fdf065773f05e8ab95fb6"
+    },
+    {
+      "name": "metadata-orientation.png",
+      "purpose": "Valid static PNG with tEXt metadata and EXIF orientation value 6.",
+      "expectedValidity": "valid-static-png-with-metadata-and-orientation",
+      "expectedContainer": "PNG",
+      "dimensions": {
+        "width": 4,
+        "height": 4
+      },
+      "hasTransparency": false,
+      "metadata": {
+        "textComment": "Known metadata fixture",
+        "software": "Offline converter setup",
+        "exifOrientation": 6
+      },
+      "sha256": "0afb0959c3c2c6c6b3cb936c806b77ad7bc649907eed5b3f3613f8aca42c495f"
+    }
+  ]
+}

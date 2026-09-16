@@ -1,0 +1,52 @@
+.local/
+node_modules/
+.env
+.env.*
+!.env.example
+!.env.*.example
+__pycache__/
+.venv/
+
+# Build, test and generated output
+build/
+dist/
+coverage/
+out/
+output/
+converted/
+downloads/
+.cache/
+.parcel-cache/
+.vite/
+*.log
+*.converted.*
+
+# Local editor and operating-system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Local credentials and key material
+.npmrc
+.pypirc
+*.pem
+*.p12
+*.pfx
+*.key
+credentials*.json
+service-account*.json
+
+# Development-only workflow material
+.agents/
+workflow/
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+PLAN.md
+progress-tracker.md
+specs/
+trial-report.md
+
+# Keep dependency lockfiles and intentional example environment files tracked.

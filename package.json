@@ -1,0 +1,8 @@
+{
+  "name": "offline-image-converter",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  }
+}

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A private, browser-local PNG to JPEG converter.">
+    <title>PNG to JPEG | Offline image converter</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="hero">
+        <div class="hero-topline">
+          <p class="eyebrow">Offline image converter</p>
+          <span class="privacy-chip"><span aria-hidden="true">●</span> Stays in your browser</span>
+        </div>
+        <h1>Turn a PNG into a JPEG.</h1>
+        <p class="hero-copy">
+          Drop in one PNG, preview it, choose the quality, and download a genuine JPEG.
+          No uploads. No account. No internet required.
+        </p>
+      </header>
+
+      <section class="card input-card" aria-labelledby="input-heading">
+        <div
+          id="drop-zone"
+          class="drop-zone"
+          role="button"
+          tabindex="0"
+          aria-label="Drop a PNG image here or press Enter to choose a file"
+          aria-describedby="input-help"
+          aria-controls="file-input"
+        >
+          <div class="drop-icon" aria-hidden="true">↓</div>
+          <div>
+            <h2 id="input-heading">Start with a PNG</h2>
+            <p id="input-help">Drag and drop a static PNG here. One image at a time.</p>
+          </div>
+        </div>
+        <div class="picker-row">
+          <button id="choose-file" class="button button-primary" type="button" aria-controls="file-input">
+            Choose a PNG file
+          </button>
+          <input
+            id="file-input"
+            class="visually-hidden"
+            type="file"
+            accept=".png,image/png"
+            tabindex="-1"
+            aria-hidden="true"
+          >
+          <span>or drop it above</span>
+        </div>
+      </section>
+
+      <p id="app-status" class="status" role="status" aria-live="polite">Ready for a PNG.</p>
+      <p id="app-error" class="message message-error" role="alert" hidden></p>
+
+      <section id="source-panel" class="card content-card" aria-labelledby="source-heading" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Step 1 · Preview</p>
+            <h2 id="source-heading">Your PNG</h2>
+          </div>
+          <p id="source-name" class="file-name"></p>
+        </div>
+
+        <div class="preview-frame preview-frame-source">
+          <img id="source-preview" class="preview-image" alt="Preview of the selected PNG">
+        </div>
+
+        <dl class="file-facts">
+          <div>
+            <dt>Source size</dt>
+            <dd id="source-size">—</dd>
+          </div>
+          <div>
+            <dt>Display dimensions</dt>
+            <dd id="source-dimensions">—</dd>
+          </div>
+          <div>
+            <dt>Destination</dt>
+            <dd>JPEG</dd>
+          </div>
+        </dl>
+
+        <div id="transparency-warning" class="message message-warning" role="alert" hidden>
+          <strong>Transparency will be removed.</strong>
+          Transparent pixels will be flattened onto a white background in the JPEG.
+        </div>
+
+        <div class="control-block">
+          <div class="control-label">
+            <label for="quality">JPEG quality</label>
+            <output id="quality-value" for="quality">92%</output>
+          </div>
+          <input id="quality" type="range" min="0.6" max="1" step="0.01" value="0.92" aria-describedby="quality-help">
+          <p id="quality-help" class="control-help">92% is a high-quality starting point. Lower values make a smaller file.</p>
+        </div>
+
+        <div class="button-row">
+          <button id="convert-button" class="button button-primary" type="button">Convert to JPEG</button>
+          <button id="reset-button" class="button button-secondary" type="button">Reset</button>
+        </div>
+      </section>
+
+      <section id="result-panel" class="card content-card result-card" aria-labelledby="result-heading" hidden>
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Step 2 · Download</p>
+            <h2 id="result-heading">JPEG ready</h2>
+          </div>
+          <span class="format-badge">image/jpeg</span>
+        </div>
+
+        <div class="preview-frame preview-frame-result">
+          <img id="result-preview" class="preview-image" alt="Preview of the converted JPEG">
+        </div>
+
+        <p id="result-details" class="result-details"></p>
+        <a id="download-link" class="button button-primary download-button" hidden>Download JPEG</a>
+      </section>
+
+      <footer class="app-footer">
+        <span>Local processing only</span>
+        <span aria-hidden="true">·</span>
+        <span>PNG → JPEG</span>
+      </footer>
+    </main>
+  </body>
+</html>
