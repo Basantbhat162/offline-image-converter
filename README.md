@@ -14,6 +14,8 @@ This repository is an incomplete open-source baseline. The implemented path is:
 
 The planned PNG to WebP, JPEG to PNG, JPEG to WebP, WebP to PNG and WebP to JPEG routes are not implemented yet. The launcher, broader browser acceptance, and full first-release checks are also still pending.
 
+The PNG-to-JPEG acceptance record is partial; see [docs/acceptance/png-to-jpeg.md](docs/acceptance/png-to-jpeg.md). Browser compatibility is user-reported only, and offline, privacy/network, drag-and-drop and full keyboard acceptance checks remain pending.
+
 ## Privacy and offline use
 
 The conversion path is browser-local: selected image bytes stay in the browser while the image is decoded and converted. The app is a static frontend with no runtime CDN or conversion API dependency, so it can be served from a local folder for offline use. The complete offline and cross-browser acceptance review remains incomplete.
